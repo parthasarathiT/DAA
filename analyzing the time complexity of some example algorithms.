@@ -1,0 +1,6 @@
+print("Hello World")
+
+# This code is contributed by akashish__
+##Time Complexity: In the above code “Hello World” is printed only once on the screen. 
+#So, the time complexity is constant: O(1) i.e. every time a constant amount of time is required to execute code, no matter which operating system or which machine configurations you are using. 
+#Auxiliary Space: O(1)
