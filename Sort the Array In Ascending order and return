@@ -1,0 +1,46 @@
+# Python3 program for the above approach 
+
+# Function to print array element 
+def printArray(arr, N):
+	
+	# Traverse the array 
+	for i in range(N):
+		print(arr[i], end = ' ')
+		
+# Function to sort the array in O(N) 
+def sortArray(arr, N):
+	
+	i = 0
+	
+	# Traverse the array 
+	while i < N:
+		
+		# If the current element is 
+		# at correct position
+		if arr[i] == i + 1:
+			i += 1
+		
+		# Else swap the current element 
+		# with it's correct position
+		else:
+			
+			# Swap the value of 
+			# arr[i] and arr[arr[i]-1] 
+			temp1 = arr[i]
+			temp2 = arr[arr[i] - 1]
+			arr[i] = temp2
+			arr[temp1 - 1] = temp1
+	
+# Driver code 
+if __name__=='__main__':
+	
+	arr = [ 2, 1, 5, 3, 4 ]
+	N = len(arr)
+	
+	# Function call to sort the array
+	sortArray(arr, N)
+	
+	# Function call to print the array
+	printArray(arr, N)
+
+# This code is contributed by rutvik_56 
