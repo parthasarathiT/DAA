@@ -1,0 +1,12 @@
+def minOperations(nums):
+
+    n = len(nums)
+    idx = nums.index(0)
+    res = 0
+    for i in range(n - 1):
+        if nums[i] > nums[i + 1]:
+            res += 1
+    if idx!= 0 and idx!= n - 1:
+        res += 1
+    return res
+print(minOperations([4,2,0,3,1])) 
