@@ -1,0 +1,22 @@
+def words_within_two_edits(queries, dictionary):
+    def is_within_two_edits(word1, word2):
+        if len(word1) != len(word2):
+            return False
+        diff_count = 0
+        for c1, c2 in zip(word1, word2):
+            if c1 != c2:
+                diff_count += 1
+                if diff_count > 2:
+                    return False
+        return True
+
+    result = []
+    for query in queries:
+        if any(is_within_two_edits(query, dict_word) for dict_word in dictionary):
+            result.append(query)
+
+    return result
+
+queries = ["word", "note", "ants", "wood"]
+dictionary = ["wood", "joke", "moat"]
+print(words_within_two_edits(queries, dictionary))
