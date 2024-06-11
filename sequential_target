@@ -1,0 +1,25 @@
+from collections import defaultdict
+
+def destroy_sequential_targets(nums, space):
+    remainder_count = defaultdict(int)
+    min_num_for_remainder = {}
+
+    for num in nums:
+        remainder = num % space
+        remainder_count[remainder] += 1
+        if remainder not in min_num_for_remainder or num < min_num_for_remainder[remainder]:
+            min_num_for_remainder[remainder] = num
+
+    max_targets = 0
+    min_seed_value = float('inf')
+
+    for remainder, count in remainder_count.items():
+        if count > max_targets or (count == max_targets and min_num_for_remainder[remainder] < min_seed_value):
+            max_targets = count
+            min_seed_value = min_num_for_remainder[remainder]
+
+    return min_seed_value
+
+nums = [3, 7, 8, 1, 1, 5]
+space = 2
+print(destroy_sequential_targets(nums, space))  
