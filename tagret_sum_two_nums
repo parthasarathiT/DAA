@@ -1,0 +1,10 @@
+def twoSum(nums, target):
+    res = {}
+    for i, num in enumerate(nums):
+        if target - num in res:
+            return [res[target - num], i]
+        res[num] = i
+    return []
+nums = [0,3]
+target = 3
+print(twoSum(nums, target)) 
