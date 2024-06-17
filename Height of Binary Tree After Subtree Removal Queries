@@ -1,0 +1,29 @@
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def heightAfterSubtreeRemoval(root, queries):
+    def dfs(node):
+        if not node:
+            return 0
+        left_height = dfs(node.left)
+        right_height = dfs(node.right)
+        return 1 + max(left_height, right_height)
+
+    def removeSubtree(node, target):
+        if not node:
+            return None
+        if node.val == target:
+            return None
+        node.left = removeSubtree(node.left, target)
+        node.right = removeSubtree(node.right, target)
+        return node
+
+    result = []
+    for query in queries:
+        root = removeSubtree(root, query)
+        result.append(dfs(root))
+
+    return result
