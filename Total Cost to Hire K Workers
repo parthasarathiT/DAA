@@ -1,0 +1,25 @@
+import heapq
+
+def mincostToHireWorkers(costs, k, candidates):
+    n = len(costs)
+    min_cost = float('inf')
+    
+    for i in range(n):
+        heap = []
+        for j in range(n):
+            ratio = costs[i] / costs[j]
+            if len(heap) < candidates:
+                heapq.heappush(heap, -costs[j])
+            elif -costs[j] > heap[0]:
+                heapq.heappop(heap)
+                heapq.heappush(heap, -costs[j])
+        if len(heap) == candidates:
+            min_cost = min(min_cost, sum(heap) * ratio)
+    
+    return int(min_cost)
+
+# Example
+costs = [17, 12, 10, 2, 7, 2, 11, 20, 8]
+k = 3
+candidates = 4
+print(mincostToHireWorkers(costs, k, candidates))
