@@ -1,0 +1,13 @@
+def maxSumOfDistinctSubarrays(nums, k):
+    max_sum = 0
+    for i in range(len(nums) - k + 1):
+        subarray = nums[i:i+k]
+        if len(set(subarray)) == k:
+            max_sum = max(max_sum, sum(subarray))
+    return max_sum
+
+# Example
+nums = [1, 5, 4, 2, 9, 9, 9]
+k = 3
+output = maxSumOfDistinctSubarrays(nums, k)
+print(output)  # Output: 15
